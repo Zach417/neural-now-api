@@ -110,7 +110,6 @@ function findMany(user, callback) {
       ['name', 'ascending']
     ])
     .exec(function(err, result) {
-      console.log(result);
       return callback(result);
     });
 }
