@@ -19,7 +19,6 @@ app.use(function (req, res, next) {
 
 app.use('/', require('./router'));
 
-
 switch (process.env.NODE_ENV) {
   case 'development':
     console.log('Magic happens on port 8080');
