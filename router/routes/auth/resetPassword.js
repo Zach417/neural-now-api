@@ -78,7 +78,7 @@ module.exports = function(app) {
               // link sent to user's email address to reset their password
               // and token automatically appended to link (which was stored in memory)
               var html = EmailSender.Emails.PasswordReset
-                .replace(new RegExp("__LINK__", 'g'), "http://www.neuralnow.com/auth/forgot-password/" + passwordReset._id + "?token=" + token)
+                .replace(new RegExp("__LINK__", 'g'), "http://www.neuralnow.com/forgot-password/" + passwordReset._id + "?token=" + token)
                 .replace("__NAME__", user.firstName);
               var emailSender = new EmailSender({
                 from: "zach@churchetto.com",
