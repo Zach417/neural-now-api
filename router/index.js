@@ -15,6 +15,9 @@ router.use(function (req, res, next) {
   next();
 });
 
+require('./config') (router);
+
+router.use(require('./routes/auth'));
 router.use(require('./routes/neuralnetwork'));
 
 module.exports = router;
