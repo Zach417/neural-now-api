@@ -9,6 +9,10 @@ module.exports = function (config) {
 		var email = req.headers['email'];
 		var accessToken = req.headers['access-token'];
 
+		if (email) {
+			email = email.replace("%40","@");
+		}
+
 		if (!email || !accessToken) {
 			return res.status(401).json(config.invalidRequest);
 		}

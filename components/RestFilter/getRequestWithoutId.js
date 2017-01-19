@@ -8,6 +8,10 @@ module.exports = function (config) {
 		var email = req.headers['email'];
 		var accessToken = req.headers['access-token'];
 
+		if (email) {
+			email = email.replace("%40","@");
+		}
+
 		getUser(email, accessToken, function (user) {
 
 			var requestSecurity = new RequestSecurity({

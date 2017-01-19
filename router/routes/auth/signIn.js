@@ -48,10 +48,12 @@ module.exports = function (app) {
 			} else {
 				user.generateToken(function (token) {
           req.session.email = email;
+          res.cookie('email', email);
 					res.cookie('accessToken', token);
 					return res.json({
 						success: true,
-            token: token,
+            email: email,
+            accessToken: token,
 						message: "You have been successfully authenticated.",
 					});
 				});

@@ -5,9 +5,13 @@ var getUser = require('./getUser');
 module.exports = function (config) {
 
 	this.route = function (req, res) {
-		var email = req.headers['email'];
+		var email = req.headers['email']
 		var accessToken = req.headers['access-token'];
 		var id = req.params.id;
+
+		if (email) {
+			email = email.replace("%40","@");
+		}
 
 		if (!id) {
 			return res.status(401).json(config.invalidRequest);

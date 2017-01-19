@@ -6,12 +6,14 @@ var readFilterSchema = {
   "title": "Neural Network Schema",
   "type": "object",
   "properties": {
+    "_id": { "type": "string" },
     "name": { "type": "string" },
+    "description": { "type": "string" },
     "input": {
       "type": "object",
       "properties": {
-        "size": { "type": "string" },
-        "activation": { "type": "number" },
+        "size": { "type": "number" },
+        "activation": { "type": "string" },
       },
     },
     "hidden": {
@@ -19,16 +21,16 @@ var readFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "size": { "type": "string" },
-          "activation": { "type": "number" },
+          "size": { "type": "number" },
+          "activation": { "type": "string" },
         },
       },
     },
     "output": {
       "type": "object",
       "properties": {
-        "size": { "type": "string" },
-        "activation": { "type": "number" },
+        "size": { "type": "number" },
+        "activation": { "type": "string" },
       },
     },
     "weights": {
@@ -54,11 +56,13 @@ var writeFilterSchema = {
   "title": "Neural Network Schema",
   "type": "object",
   "properties": {
+    "name": { "type": "string" },
+    "description": { "type": "string" },
     "input": {
       "type": "object",
       "properties": {
-        "size": { "type": "string" },
-        "activation": { "type": "number" },
+        "size": { "type": "number" },
+        "activation": { "type": "string" },
       },
     },
     "hidden": {
@@ -66,16 +70,16 @@ var writeFilterSchema = {
       "items": {
         "type": "object",
         "properties": {
-          "size": { "type": "string" },
-          "activation": { "type": "number" },
+          "size": { "type": "number" },
+          "activation": { "type": "string" },
         },
       },
     },
     "output": {
       "type": "object",
       "properties": {
-        "size": { "type": "string" },
-        "activation": { "type": "number" },
+        "size": { "type": "number" },
+        "activation": { "type": "string" },
       },
     },
     "weights": {
@@ -122,9 +126,9 @@ module.exports = new RestFilter({
   findOne: findOne,
   findMany: findMany,
   securityRoles: {
-    create: UserSecurity.isAdmin,
+    create: UserSecurity.isActiveUser,
     read: UserSecurity.isAllowed,
-    update: UserSecurity.isAdmin,
-    destroy: UserSecurity.isAdmin,
+    update: UserSecurity.isAllowed,
+    destroy: UserSecurity.isActiveUser,
   }
 });

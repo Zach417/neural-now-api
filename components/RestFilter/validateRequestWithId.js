@@ -8,9 +8,13 @@ module.exports = function (config) {
 	this.route = function (req, res, next) {
 		var email = req.headers['email'];
 		var accessToken = req.headers['access-token'];
-		var id = req.params.id;
+		var name = req.headers['name'];
 
-		if (!email || !accessToken || !id) {
+		if (email) {
+			email = email.replace("%40","@");
+		}
+
+		if (!email || !accessToken || !name) {
 			return res.status(401).json(config.invalidRequest);
 		}
 
@@ -18,17 +22,18 @@ module.exports = function (config) {
 
 		getUser(email, accessToken, function (user) {
 
-			var requestSecurity = new RequestSecurity({
-				method : req.method,
-				user: user,
-				securityRoles: config.securityRoles
-			});
+			config.findOne(user, name, function (doc) {
+				var requestSecurity = new RequestSecurity({
+					method : req.method,
+					user: user,
+					securityRoles: config.securityRoles,
+					doc: doc,
+				});
 
-			if (!requestSecurity.isAuthorized()) {
-				return res.status(401).json(config.invalidRequest);
-			}
+				if (!requestSecurity.isAuthorized()) {
+					return res.status(401).json(config.invalidRequest);
+				}
 
-			config.findOne(user, id, function (doc) {
 				if (doc && doc._id) {
 					req.body.modifiedBy = user._id;
 					req.body.modifiedOn = moment();
