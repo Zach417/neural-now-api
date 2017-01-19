@@ -14,7 +14,7 @@ function RequestSecurity(config) {
 			}
 		}
 
-		if (this.user.isAdmin === true) {
+		if (this.user && this.user.isAdmin === true) {
 			return true;
 		}
 
