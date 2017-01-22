@@ -14,6 +14,9 @@ var schema = new mongoose.Schema({
     index: true
   },
   description: String,
+  inputType: String,
+  outputDescription: String,
+  codeExample: String,
   input: layerSchema,
   hidden: [layerSchema],
   output: layerSchema,

@@ -9,6 +9,9 @@ var readFilterSchema = {
     "_id": { "type": "string" },
     "name": { "type": "string" },
     "description": { "type": "string" },
+    "inputType": { "type": "string" },
+    "outputDescription": { "type": "string" },
+    "codeExample": { "type": "string" },
     "input": {
       "type": "object",
       "properties": {
@@ -58,6 +61,9 @@ var writeFilterSchema = {
   "properties": {
     "name": { "type": "string" },
     "description": { "type": "string" },
+    "inputType": { "type": "string" },
+    "outputDescription": { "type": "string" },
+    "codeExample": { "type": "string" },
     "input": {
       "type": "object",
       "properties": {

@@ -13,8 +13,8 @@ var dbs = conf.mongodb.database;
 var connectionString = "mongodb://"+usr+":"+pwd+"@"+ip+"/"+dbs;
 mongoose.connect(connectionString, mongooseOptions);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 
 app.use(function (req, res, next) {
   console.log(req.method + req.path);
