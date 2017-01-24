@@ -12,38 +12,43 @@ var readFilterSchema = {
     "inputType": { "type": "string" },
     "outputDescription": { "type": "string" },
     "codeExample": { "type": "string" },
-    "input": {
-      "type": "object",
-      "properties": {
-        "size": { "type": "number" },
-        "activation": { "type": "string" },
-      },
-    },
-    "hidden": {
+    "layers": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "size": { "type": "number" },
-          "activation": { "type": "string" },
-        },
-      },
-    },
-    "output": {
-      "type": "object",
-      "properties": {
-        "size": { "type": "number" },
-        "activation": { "type": "string" },
-      },
-    },
-    "weights": {
-      "type": "array",
-      "items": {
-        "type": "array",
-        "items": {
-          "type": "array",
-          "items": {
-            "type": "number",
+          "layer_type": { "type": "string" },
+          "num_inputs": { "type": "number" },
+          "sx": { "type": "number" },
+          "sy": { "type": "number" },
+          "in_depth": { "type": "number" },
+          "out_depth": { "type": "number" },
+          "out_sx": { "type": "number" },
+          "out_sy": { "type": "number" },
+          "l1_decay_mul": { "type": "number" },
+          "l2_decay_mul": { "type": "number" },
+          "pad": { "type": "number" },
+          "stride": { "type": "number" },
+          "filters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sx": { "type": "number" },
+                "sy": { "type": "number" },
+                "depth": { "type": "number" },
+                "w": { "type": "mixed" },
+              },
+            },
+          },
+          "biases": {
+            "type": "object",
+            "properties": {
+              "sx": { "type": "number" },
+              "sy": { "type": "number" },
+              "depth": { "type": "number" },
+              "w": { "type": "mixed" },
+            },
           },
         },
       },
@@ -64,38 +69,43 @@ var writeFilterSchema = {
     "inputType": { "type": "string" },
     "outputDescription": { "type": "string" },
     "codeExample": { "type": "string" },
-    "input": {
-      "type": "object",
-      "properties": {
-        "size": { "type": "number" },
-        "activation": { "type": "string" },
-      },
-    },
-    "hidden": {
+    "layers": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "size": { "type": "number" },
-          "activation": { "type": "string" },
-        },
-      },
-    },
-    "output": {
-      "type": "object",
-      "properties": {
-        "size": { "type": "number" },
-        "activation": { "type": "string" },
-      },
-    },
-    "weights": {
-      "type": "array",
-      "items": {
-        "type": "array",
-        "items": {
-          "type": "array",
-          "items": {
-            "type": "number",
+          "layer_type": { "type": "string" },
+          "num_inputs": { "type": "number" },
+          "sx": { "type": "number" },
+          "sy": { "type": "number" },
+          "in_depth": { "type": "number" },
+          "out_depth": { "type": "number" },
+          "out_sx": { "type": "number" },
+          "out_sy": { "type": "number" },
+          "l1_decay_mul": { "type": "number" },
+          "l2_decay_mul": { "type": "number" },
+          "pad": { "type": "number" },
+          "stride": { "type": "number" },
+          "filters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sx": { "type": "number" },
+                "sy": { "type": "number" },
+                "depth": { "type": "number" },
+                "w": { "type": "mixed" },
+              },
+            },
+          },
+          "biases": {
+            "type": "object",
+            "properties": {
+              "sx": { "type": "number" },
+              "sy": { "type": "number" },
+              "depth": { "type": "number" },
+              "w": { "type": "mixed" },
+            },
           },
         },
       },
