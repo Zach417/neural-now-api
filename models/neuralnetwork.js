@@ -34,8 +34,9 @@ var schema = new mongoose.Schema({
   },
   description: String,
   inputType: String,
-  outputDescription: String,
   codeExample: String,
+  outputDescription: String,
+  outputClasses: [String],
   layers: [layerSchema],
   createdBy: {
     type: mongoose.Schema.ObjectId,

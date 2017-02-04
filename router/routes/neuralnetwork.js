@@ -10,8 +10,12 @@ var readFilterSchema = {
     "name": { "type": "string" },
     "description": { "type": "string" },
     "inputType": { "type": "string" },
-    "outputDescription": { "type": "string" },
     "codeExample": { "type": "string" },
+    "outputDescription": { "type": "string" },
+    "outputClasses": {
+      "type": "array",
+      "items": { "type": "string" },
+    },
     "layers": {
       "type": "array",
       "items": {
