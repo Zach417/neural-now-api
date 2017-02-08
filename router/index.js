@@ -19,5 +19,6 @@ require('./config') (router);
 
 router.use(require('./routes/auth'));
 router.use(require('./routes/neuralnetwork'));
+router.use(require('./routes/compute'));
 
 module.exports = router;
