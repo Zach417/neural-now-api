@@ -16,24 +16,6 @@ function getOptions (id) {
   return options;
 }
 
-router.get('/compute/:id', function (req, res) {
-  var options = getOptions(req.params.id);
-  var query = req.url.split("?");
-  if (query.length > 1) {
-    options.path += "?" + query[1];
-  }
-
-  http.get(options, function (resp) {
-    var chunks = "";
-    resp.on('data', function (chunk) {
-      chunks += chunk;
-    });
-    resp.on('end', function () {
-      res.json(JSON.parse(chunks));
-    });
-  });
-});
-
 router.post('/compute/:id', function (req, res) {
   var options = getOptions(req.params.id);
   request({
