@@ -32,6 +32,7 @@ var schema = new mongoose.Schema({
     unique: true,
     index: true
   },
+  type: String,
   description: String,
   inputType: String,
   codeExample: String,

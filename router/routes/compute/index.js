@@ -1,4 +1,5 @@
 var http = require('http');
+var request = require('request');
 var express = require('express');
 var router = express.Router();
 
@@ -30,6 +31,21 @@ router.get('/compute/:id', function (req, res) {
     resp.on('end', function () {
       res.json(JSON.parse(chunks));
     });
+  });
+});
+
+router.post('/compute/:id', function (req, res) {
+  var options = getOptions(req.params.id);
+  request({
+    url: "http://" + options.host + "/compute/" + req.params.id,
+    method: "POST",
+    json: req.body,
+  }, function (err, message, response) {
+    if (err) {
+      res.json({"error": response});
+    } else {
+      res.json(response);
+    }
   });
 });
 
