@@ -35,6 +35,8 @@ var schema = new mongoose.Schema({
   type: String,
   description: String,
   inputType: String,
+  inputSize: [Number],
+  inputNormalized: Boolean,
   codeExample: String,
   outputDescription: String,
   outputClasses: [String],

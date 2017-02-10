@@ -11,6 +11,11 @@ var readFilterSchema = {
     "description": { "type": "string" },
     "type": { "type": "string" },
     "inputType": { "type": "string" },
+    "inputSize": {
+      "type": "array",
+      "items": { "type": "number" },
+    },
+    "inputNormalized": { "type": "boolean" },
     "codeExample": { "type": "string" },
     "outputDescription": { "type": "string" },
     "outputClasses": {
@@ -73,6 +78,11 @@ var writeFilterSchema = {
     "description": { "type": "string" },
     "type": { "type": "string" },
     "inputType": { "type": "string" },
+    "inputSize": {
+      "type": "array",
+      "items": { "type": "number" },
+    },
+    "inputNormalized": { "type": "boolean" },
     "codeExample": { "type": "string" },
     "outputDescription": { "type": "string" },
     "outputClasses": {
