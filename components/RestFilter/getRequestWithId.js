@@ -1,6 +1,7 @@
 var filter = require('../JsonFilter');
 var RequestSecurity = require('./RequestSecurity');
 var getUser = require('./getUser');
+var selectAttributes = require('./selectAttributes');
 
 module.exports = function (config) {
 
@@ -34,15 +35,10 @@ module.exports = function (config) {
 				if (doc && doc._id) {
 					var result = {};
 					if (typeof select === "string") {
-						var _doc = {};
-						_doc[select] = doc[select];
+						var _doc = selectAttributes([select], doc);
 						result = filter(config.readFilterSchema, _doc);
 					} else if (typeof select === "object") {
-						var _doc = {};
-						for (var i = 0; i < select.length; i++) {
-							var attribute = select[i];
-							_doc[attribute] = doc[attribute];
-						}
+						var _doc = selectAttributes(select, doc);
 						result = filter(config.readFilterSchema, _doc);
 					} else if (!select || select == '' || select.length === 0) {
 						result = filter(config.readFilterSchema, doc);
