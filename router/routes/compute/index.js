@@ -2,6 +2,7 @@ var http = require('http');
 var request = require('request');
 var express = require('express');
 var router = express.Router();
+var NeuralNetwork = require('../../../models/neuralnetwork');
 
 function getOptions (id) {
   var options = {};
@@ -18,17 +19,28 @@ function getOptions (id) {
 
 router.post('/compute/:id', function (req, res) {
   var options = getOptions(req.params.id);
-  request({
-    url: "http://" + options.host + "/compute/" + req.params.id,
-    method: "POST",
-    json: req.body,
-  }, function (err, message, response) {
-    if (err) {
-      res.json({"error": response});
-    } else {
-      res.json(response);
-    }
-  });
+  NeuralNetwork
+    .findOne({
+      "name": req.params.id
+    })
+    .exec(function(err, result) {
+      body = {};
+      body.input = req.body;
+      body.type = result.inputType;
+      body.shape = result.inputSize;
+
+      request({
+        url: "http://" + options.host + "/compute/" + req.params.id,
+        method: "POST",
+        json: body,
+      }, function (err, message, response) {
+        if (err) {
+          res.json({"error": response});
+        } else {
+          res.json(response);
+        }
+      });
+    });
 });
 
 module.exports = router;
