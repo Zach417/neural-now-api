@@ -9,6 +9,30 @@ var readFilterSchema = {
     "_id": { "type": "string" },
     "name": { "type": "string" },
     "description": { "type": "string" },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string" },
+        }
+      },
+    },
+    "paper": {
+      "type": "object"
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+      }
+    },
+    "date": { "type": "string" },
+    "abstract": { "type": "string" },
+    "github": { "type": "string" },
+    "files": {
+      "type": "array",
+      "items": { "type": "string" },
+    },
     "type": { "type": "string" },
     "inputType": { "type": "string" },
     "inputSize": {
@@ -76,6 +100,30 @@ var writeFilterSchema = {
   "properties": {
     "name": { "type": "string" },
     "description": { "type": "string" },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string" },
+        }
+      },
+    },
+    "paper": {
+      "type": "object"
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+      }
+    },
+    "date": { "type": "string" },
+    "abstract": { "type": "string" },
+    "github": { "type": "string" },
+    "files": {
+      "type": "array",
+      "items": { "type": "string" },
+    },
     "type": { "type": "string" },
     "inputType": { "type": "string" },
     "inputSize": {

@@ -1,6 +1,16 @@
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
+var paperSchema = new mongoose.Schema({
+  name: String,
+  url: String,
+});
+
+var authorSchema = new mongoose.Schema({
+  name: String,
+  url: String,
+});
+
 var filterSchema = new mongoose.Schema({
   sx: Number,
   sy: Number,
@@ -34,6 +44,14 @@ var schema = new mongoose.Schema({
   },
   type: String,
   description: String,
+
+  authors: [authorSchema],
+  paper: paperSchema,
+  date: String,
+  abstract: String,
+  github: String,
+  files: [String]
+
   inputType: String,
   inputSize: [Number],
   inputNormalized: Boolean,
