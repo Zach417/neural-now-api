@@ -12,7 +12,7 @@ var readFilterSchema = {
     "authors": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
         "properties": {
           "name": { "type": "string" },
           "url": { "type": "string" },
@@ -20,7 +20,7 @@ var readFilterSchema = {
       },
     },
     "paper": {
-      "type": "object"
+      "type": "object",
       "properties": {
         "name": { "type": "string" },
         "url": { "type": "string" },
@@ -103,7 +103,7 @@ var writeFilterSchema = {
     "authors": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
         "properties": {
           "name": { "type": "string" },
           "url": { "type": "string" },
@@ -111,7 +111,7 @@ var writeFilterSchema = {
       },
     },
     "paper": {
-      "type": "object"
+      "type": "object",
       "properties": {
         "name": { "type": "string" },
         "url": { "type": "string" },
