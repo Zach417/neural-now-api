@@ -50,7 +50,7 @@ var schema = new mongoose.Schema({
   date: String,
   abstract: String,
   github: String,
-  files: [String]
+  files: [String],
 
   inputType: String,
   inputSize: [Number],
